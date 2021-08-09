@@ -4,16 +4,16 @@ const dbConnection = async () => {
   try {
     //con process va al archivo .env y me trae la variable de la conexión BD_CONNECTION
     await mongoose.connect(process.env.BD_CONNECTION, {
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
       useNewUrlParser: true,
+      useFindAndModify: false,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
     });
-    console.log("Connection Mongo ON");
+    console.log("Connection with MongoDB: ON");
   } catch (e) {
-    console.log("Error in connecting to MongoDB: ", e);
-    throw new Error("Error in connecting to MongDB");
+    console.log("Error connecting to MongoDB: ", e);
+    throw new Error("Error connecting to MongoDB");
   }
-};
-//Exportar la función dbConnection 
+}; 
+
 module.exports = { dbConnection };
